@@ -16,18 +16,18 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
 });
 
-app.post('/api/file-analysis', upload.single('upfile'), (req, res) => {
+app.post('/api/fileanalyse', upload.single('upfile'), (req, res) => {
     const file = req.file;
 
     if (file) {
-        res.status(201).json({
+        res.json({
             name: file.originalname,
             type: file.mimetype,
             size: file.size
         });
     }
     else {
-        res.status(400).json({
+        res.json({
             error: 'Error processing file'
         });
     }
